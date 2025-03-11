@@ -6,7 +6,7 @@
 
 :root {
     --text-color: rgb(255, 255, 255);
-    --bg-url: url(assets/bg-mobile.jpg);
+    --bg-url: url(./assets/bg-mobile.jpg);
     --stroke-color: rgba(255, 255, 255, 0.5);
     --surface-color: rgba(255, 255, 255, 0.1);
     --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -30,15 +30,9 @@
 }
 
 body{
-    /*
-    background-image: url(assets/bg-mobile.jpg);
-    background-repeat: no-repeat;
-    background-position: top-center;
-    background-size: cover;
-    */
 
-    /*background: color image repeat position/size;*/
-    background: var(--bg-url) no-repeat top center/cover; /*Atalho para o código de cima*/
+    background: var(--bg-url) no-repeat top center/cover;
+    height: 100wh;
 
 }
 
@@ -49,8 +43,8 @@ color: var(--text-color);
 
 
 #container{
-    width: 360px;
-
+    width: 100%;
+    max-width: 588px;
     margin: 56px auto 0px auto;
     padding: 0 24px;
 
@@ -91,13 +85,15 @@ color: var(--text-color);
     top: 50%; 
     right: 5;
     z-index: 1; /*muda os andares*/
-    transform: translateY(-50%); /*translatey() = movimenta para cima ou para baixo*/    
+    transform: translateY(-50%); /*translatey() = movimenta para cima ou para baixo*/ 
+    
+    animation: slide-back 0.4s
 }
 
 .light #switch button {
-    right: 0;
-    left: initial; /*volta pro modo inicial(modo claro ou escuro)*/
+    animation: slide-in 0.4s forwards;
 }
+
 
 #switch span { /*span = display inline e não aceita modificar largura*/
     display: block;
@@ -179,4 +175,32 @@ footer{
     padding: 24px;
     text-align: center;
 
+}
+
+/* media queries */
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+    .light{
+        --bg-url: url(./assets/bg-desktop-light.jpg);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from{
+        left: 50%;
+    }
+    to{
+        left: 0;;
+    } 
 }
