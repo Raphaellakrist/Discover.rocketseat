@@ -30,15 +30,9 @@
 }
 
 body{
-    /*
-    background-image: url(assets/bg-mobile.jpg);
-    background-repeat: no-repeat;
-    background-position: top-center;
-    background-size: cover;
-    */
 
-    /*background: color image repeat position/size;*/
-    background: var(--bg-url) no-repeat top center/cover; /*Atalho para o código de cima*/
+    background: var(--bg-url) no-repeat top center/cover;
+    height: 100wh;
 
 }
 
@@ -179,4 +173,14 @@ footer{
     padding: 24px;
     text-align: center;
 
+}
+
+/* media queries */
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(./assetes/bg-desktop.jpg);
+    }
+    .light{
+        --bg-url: url(./assets/bgdesktop-light.jpg);
+    }
 }
